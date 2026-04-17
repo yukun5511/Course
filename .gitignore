@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build outputs
+dist/
+frontend/dist/
+build/
+frontend/build/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+backend/logs/
+frontend/logs/
+
+# Environment
+.env.local
+.env.*.local
+
+# Java
+backend/target/
+*.class
+*.jar
+*.war
+
+# Database
+*.db
+*.sqlite
+
+# Uploads
+uploads/
+backend/uploads/
+frontend/uploads/
+
+# Vite
+frontend/.vite/
+
+# Misc
+nul
+*.pid

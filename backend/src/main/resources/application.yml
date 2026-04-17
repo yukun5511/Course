@@ -1,0 +1,58 @@
+server:
+  port: 8082
+  address: 0.0.0.0
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: course-management
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/course_db?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.course.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+jwt:
+  secret: ${JWT_SECRET:course-management-secret-key-2024-very-long-secret-for-jwt-token}
+  access-token-expiration: 7200000  # 2小时 (毫秒)
+  refresh-token-expiration: 604800000  # 7天 (毫秒)
+
+# 文件上传路径
+file:
+  upload-path: ${FILE_UPLOAD_PATH:./uploads}
+
+# SpringDoc OpenAPI 配置
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+# 日志配置
+logging:
+  level:
+    com.course: debug
+    org.springframework.security: info
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

@@ -1,0 +1,21 @@
+# 测试环境配置
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  sql:
+    init:
+      mode: always
+
+# JWT测试配置
+jwt:
+  secret: test-secret-key-for-jwt-token-generation-must-be-long-enough
+  access-token-expiration: 3600000  # 1小时
+  refresh-token-expiration: 86400000  # 24小时
+
+# MyBatis Plus配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
